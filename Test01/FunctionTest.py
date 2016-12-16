@@ -6,3 +6,7 @@ from numpy import *
 A = [[1],[2]]
 print(shape(A))
 '''
+
+#zeros
+A=zeros(5)
+print(A,int8)

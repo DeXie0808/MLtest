@@ -39,7 +39,6 @@ def  file2matrix(filename):
     return returnMat,classLabelVector
 
 
-
 def autoNorm(dataSet):
     minVals = dataSet.min(0)
     maxVals = dataSet.max(0)
