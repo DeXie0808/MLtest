@@ -1,7 +1,6 @@
 from numpy import *
 import operator
-import logging
-
+import os
 
 
 def createDataSet():
@@ -80,7 +79,7 @@ def datingClassTest():
           print("the total error rate is : %f " % (errorCount/float(numTestVesc)))
 
 
-def classifyPerson():
+def classifyPerson():                                                                                       #输入数据进行分类判别
      resultList  = ['not at all', 'in small doses', 'in large doses']
      percentTats = float(input("percentage of time spent playing video games ?"))
      ffMiles     = float(input("frequent flier miles earned per year ?"))
@@ -93,35 +92,36 @@ def classifyPerson():
 
 
 def img2vector(filename):
-    returnVect = zeros((1,1024))
+    returnVect = zeros((1,1024))                      #创建一个1x1024的零矩阵
     fr = open(filename)
     for i in range(32):
         lineStr = fr.readline()
         for j in  range(32):
-            returnVect[0,32*i+j] = int(lineStr[j])
-        return returnVect
+            returnVect[0,32*i+j] = int(lineStr[j])   #将读取的数字，写入第0行，第32*i+j的位置
+        return returnVect                           #一个手写数字会被返回成一个一个1024列的行矩阵
+
 
 #手写数字识别，测试代码
 def  handwritingClassTest():
       hwLabels = []
       trainingFileList = os.listdir('F:\python\machinelearninginaction\Ch02\\trainingDigits')
       m = len(trainingFileList)
-      trainingFileList = zeros((m,1024))
+      trainingMat = zeros((m,1024))
       for i in range(m):
           filenameStr = trainingFileList[i]
           fileStr = filenameStr.split('.')[0]
-          classNumStr = int(fileStr.split('.')[0])
+          classNumStr = int(fileStr.split('_')[0])
           hwLabels.append(classNumStr)
-          trainingMat[i,:]=img2vector('dddd /%s' % filenameStr)
-      testFileList = os.listdir(' ')
+          trainingMat[i,:]=img2vector('F:\python\machinelearninginaction\Ch02\\trainingDigits/%s' % filenameStr)
+      testFileList = os.listdir('F:\python\machinelearninginaction\Ch02\\testDigits')
       errorCount = 0.0
       mTest = len(testFileList)
       for i in range(mTest):
           filenameStr = testFileList[i]
           fileStr = filenameStr.split('.')[0]
           classNumStr = int(fileStr.split('_')[0])
-          vectorUnderTest = img2vector('dddd /%s' % filenameStr)
-          classifierResult = classify0(vectorUnderTest,trainingMat,hwLabels,3)
+          vectorUnderTest = img2vector('F:\python\machinelearninginaction\Ch02\\testDigits/%s' % filenameStr)
+          classifierResult = classify0(vectorUnderTest,trainingMat,hwLabels,3)                                          #一个1024纬空间中的一个点，计算与训练样本之间的距离
           print("the classifier came back with: %d, the real answer is: %d" % (classifierResult,classNumStr))
           if(classifierResult != classNumStr) : errorCount += 1.0
       print("\nthe total number of error is: %d" % errorCount)

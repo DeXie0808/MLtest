@@ -37,4 +37,5 @@ normMat , ranges , minVals = chapter01.kNN.autoNorm(datingDataMat)
 #输入数据，生成结果
 #chapter01.kNN.classifyPerson()
 
-
+#手写数字识别
+chapter01.kNN.handwritingClassTest()
