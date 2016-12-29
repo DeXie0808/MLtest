@@ -13,7 +13,7 @@ print(chapter01.kNN.classify0([0,0],group,labels,3))
 #改进约会网站匹配效果
 reload(chapter01.kNN)
 datingDataMat,datingLabels = chapter01.kNN.file2matrix('F:\python\machinelearninginaction\Ch02\datingTestSet2.txt')
-#print(datingDataMat,datingLabels)
+print(datingDataMat,datingLabels)
 
 
 #matplotlib 创建散点图
