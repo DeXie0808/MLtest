@@ -49,4 +49,13 @@ b = zeros((2,10))
 print(b)
 
 
+str='wang qin he'
+print(str.split(' ',1),)
+
+
+a=[1,2,3]
+b=[4,5,6]
+a.append(b)
+
+print(a)
 '''

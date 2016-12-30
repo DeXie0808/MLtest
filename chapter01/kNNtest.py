@@ -31,7 +31,7 @@ def file2matrix(filename):
     index = 0
     for line in arrayOLine:
         line = line.strip()
-        listFromLine = line.strip('\t')
+        listFromLine = line.split('\t')
         returnMat[index,:] = listFromLine[0:3]
         classLabelVector.append(int(listFromLine[-1]))
         index += 1
@@ -52,13 +52,13 @@ def datingClassTest():
     dataMat,dataLabels = file2matrix('F:\python\machinelearninginaction\Ch02\datingTestSet2.txt')
     normDataSet ,ranges, minValue = autoNorm(dataMat)
     dataMatSize = dataMat.shape[0]
-    testDataSize = (dataMatSize*hoRoit)
+    testDataSize = int(dataMatSize*hoRoit)
     errorCount = 0
     for i in range(testDataSize):
         classifyResult = classify0(normDataSet[i,:],normDataSet[testDataSize,:dataMatSize:],dataLabels[testDataSize:dataMatSize],3)
-        print("the classifier came back with: %d, the real answer is: %d" % (classifyResult, testDataSize[i]))
+        print("the classifier came back with: %d, the real answer is: %d" % (classifyResult, dataLabels[i]))
         if (classifyResult != dataLabels[i]): errorCount += 1.0
-        print("the total error rate is : %f " % (errorCount / float(testDataSize)))
+        print("the total error rate is : %f " % (errorCount/float(testDataSize)))
 
 
 

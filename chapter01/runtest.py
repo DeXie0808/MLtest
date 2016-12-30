@@ -12,3 +12,5 @@ print(chapter01.kNNtest.classify0([0.1,0.1],group,labels,3))
 reload(chapter01.kNNtest)
 datingDataMat,datingLabels = chapter01.kNNtest.file2matrix('F:\python\machinelearninginaction\Ch02\datingTestSet2.txt')
 print(datingDataMat,datingLabels)
+
+chapter01.kNNtest.datingClassTest()
