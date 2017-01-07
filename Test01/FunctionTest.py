@@ -52,10 +52,40 @@ print(b)
 str='wang qin he'
 print(str.split(' ',1),)
 
-
 a=[1,2,3]
 b=[4,5,6]
-a.append(b)
+a.extend(b)
 
 print(a)
+
+for i in range(5):
+    print(i)
+
+
+dataSet = [[1,1,'yes'],[1,0,'no'],[1,1,'no'],[0,1,'yes'],[0,1,'no'],[1,0,'no']]
+print(len(dataSet[0]))
+
+
 '''
+abc = {'wang','qin','qin',6}
+print(abc)
+
+bcd = set([5,5,6,7,8,9,9,'wang','qin'])
+print(bcd-abc)
+bef = set('a')
+bef.add('a')
+print(bef)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
