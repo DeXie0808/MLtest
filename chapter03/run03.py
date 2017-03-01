@@ -16,3 +16,4 @@ print(str)
 myDat,labels = chapter03.trees.createDataSet()
 myTree = chapter03.trees.createTree(myDat,labels)
 print(myTree)
+
