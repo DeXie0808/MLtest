@@ -20,13 +20,14 @@ def calcShannonEnt(dataSet):                          #计算给定数据集的�
 #测试香农熵计算
 def createDataSet():
     #dataSet = [[1,1,'yes'],[1,0,'no'],[1,1,'no'],[0,1,'yes'],[0,1,'no'],[1,0,'no'],[2,3,'no'],[4,7,'yes']]
-    dataSet = [[1,1,'yes'],[1,1,'yes'],[1,0,'no'],[0,1,'no'],[0,1,'no']]
+    #dataSet = [[1,1,'yes'],[1,1,'yes'],[1,0,'no'],[0,1,'no'],[0,1,'no']]
+    dataSet = [[1,1,'maybe'],[2,2,'maybe'],[1,0,'no'],[0,1,'yes'],[0,2,'yes'],[3,2,'no'],[1,4,'yes']]
     labels = ['no  surfacing','flippers']
     return dataSet,labels
 
 
 def splitDataSet(dataSet , axis , value):            #划分数据集并(数据集，待分类的特征，期望分类的值)
-    retDataSet = []                                    #
+    retDataSet = []                                    #划分的数据集序列
     for featVec in dataSet:
         if featVec[axis] == value:                     #如果当前数据集元素特征值等于value
             reducedFeatVec = featVec[:axis]            #
@@ -40,7 +41,7 @@ def chooseBestFeatureToSplit(dataSet):                          #选择最好的
     baseEntropy = calcShannonEnt(dataSet)                           #计算数据集原始香农熵
     bestInfoGain = 0.0;  bestFeature = -1                           #
     for i in range(numFeatures):                                   #遍历数据集特征
-        featList = [example[i]  for example in dataSet]            #遍历数据集所以元素的当前特征的值
+        featList = [example[i]  for example in dataSet]            #遍历数据集所有元素的当前特征的值
         uniqueVals = set(featList)                                  #将值放入集合中
         newEntropy = 0.0                                            #
         for value in uniqueVals:                                   #遍历特征值
@@ -54,6 +55,8 @@ def chooseBestFeatureToSplit(dataSet):                          #选择最好的
     return bestFeature                                             #返回最佳特征
 
 
+
+
 def majorityCnt(classList):                                       #返回输入列表的key出现次数,降序排列
     classCount = {}
     for vote in classList:
@@ -61,6 +64,8 @@ def majorityCnt(classList):                                       #返回输入�
         classCount[vote] += 1
     sortedClassCount = sorted(classCount.items(),key = operator.itemgetter(1),reversed = True)
     return sortedClassCount[0][0]
+
+
 
 #--------------------Decision tree
 def createTree(dataSet,labels):
@@ -79,16 +84,4 @@ def createTree(dataSet,labels):
         subLabels = labels[:]
         myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet,bestFeat,value),subLabels)
     return myTree
-
-
-
-
-
-
-
-
-
-
-
-
 
