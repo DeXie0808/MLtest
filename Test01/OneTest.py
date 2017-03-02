@@ -1,20 +1,5 @@
 # -*- coding: utf-8 -*-
 from numpy import *
-group=array([[1,2,9]])
-
-one = tile(group,(4,2,3))
-
-listOne = [1,2,3]
-listTwo = list("hello")
-print(listOne,listTwo)
-
-
-t1 = 1,2,3
-t2 = "wangqinhe","tianyun"
-t3 = (1,2,3,4)
-t4 = ()
-t5 = (1,)
-print(t1,t2,t3,t4,t5)
 
 
 
