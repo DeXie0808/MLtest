@@ -2,9 +2,13 @@ from imp import reload
 import chapter03.trees
 str='-------------------'
 
+"""
+"""
+
 reload(chapter03.trees)
 myDat,labels = chapter03.trees.createDataSet()
 print(chapter03.trees.calcShannonEnt(myDat))
+
 
 myDat,labels = chapter03.trees.createDataSet()
 print(myDat)
@@ -16,3 +20,4 @@ print(str)
 myDat,labels = chapter03.trees.createDataSet()
 myTree = chapter03.trees.createTree(myDat,labels)
 print(myTree)
+
