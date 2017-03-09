@@ -63,14 +63,14 @@ def majorityCnt(classList):                                       #返回输入�
         if vote not in classCount.keys(): classCount[vote] = 0
         classCount[vote] += 1
     sortedClassCount = sorted(classCount.items(),key = operator.itemgetter(1),reversed = True)
-    return sortedClassCount[0][0]
+    return sortedClassCount[0][0]                                 #返回出现次数最多的key
 
 
 
 #--------------------Decision tree
 def createTree(dataSet,labels):
-    classList = [example[-1] for example in dataSet]
-    if classList.count(classList[0]) == len(classList):
+    classList = [example[-1] for example in dataSet]            #找到每个数据的标签
+    if classList.count(classList[0]) == len(classList):         #
         return classList[0]
     if len(dataSet[0]) == 1:
         return majorityCnt(classList)
