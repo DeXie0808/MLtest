@@ -1,5 +1,6 @@
 from imp import reload
 import chapter03.trees
+import chapter03.treePlotter
 str='-------------------'
 
 
@@ -22,3 +23,5 @@ myDat,labels = chapter03.trees.createDataSet()
 myTree = chapter03.trees.createTree(myDat,labels)
 print(myTree)
 
+#----------绘制决策树
+chapter03.treePlotter.createPlot()

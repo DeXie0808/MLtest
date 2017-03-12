@@ -70,14 +70,14 @@ def majorityCnt(classList):                                       #返回输入�
 #--------------------Decision tree
 def createTree(dataSet,labels):
     classList = [example[-1] for example in dataSet]            #找到每个数据的标签
-    if classList.count(classList[0]) == len(classList):         #
-        return classList[0]
+    if classList.count(classList[0]) == len(classList):         #如果所有的类标签完全相同，则退出递归
+        return classList[0]                                     #返回该标签
     if len(dataSet[0]) == 1:
         return majorityCnt(classList)
     bestFeat = chooseBestFeatureToSplit(dataSet)
     bestFeatLabel = labels[bestFeat]
     myTree = {bestFeatLabel:{}}
-    del(labels[bestFeat])
+    del(labels[bestFeat])                                       #删除已经选好的标签
     featValues = [example[bestFeat] for example in  dataSet]
     uniqueVals = set(featValues)
     for value in uniqueVals:
